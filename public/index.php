@@ -1,5 +1,7 @@
 <?php
 
+// echo 123;exit;
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
