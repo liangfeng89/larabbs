@@ -5,7 +5,6 @@
 @stop
 
 @section('content')
-
 <div class="container">
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
@@ -58,7 +57,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('scripts')
@@ -71,8 +69,15 @@
     $(document).ready(function(){
         var editor = new Simditor({
             textarea: $('#editor'),
+            upload: {
+                url: '{{ route('topics.upload_image') }}',
+                params: { _token: '{{ csrf_token() }}' },
+                fileKey: 'upload_file',
+                connectionCount: 3,
+                leaveConfirm: '文件上传中，关闭此页面将取消上传。'
+            },
+            pasteImage: true,
         });
     });
     </script>
-
 @stop
