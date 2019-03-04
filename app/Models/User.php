@@ -32,4 +32,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Topic::class);
     }
+
+    //判断是否本人编辑或删除贴子
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
+
 }
