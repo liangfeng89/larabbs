@@ -23,3 +23,4 @@
 @endif
 
 {{-- 分页 --}}
+{!! $replies->appends(Request::except('page'))->render() !!}
