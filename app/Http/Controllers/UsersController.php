@@ -9,6 +9,7 @@ use App\Handlers\ImageUploadHandler;
 
 class UsersController extends Controller
 {
+
 	public function __construct()
 	{
 		$this->middleware('auth', ['except'=>['show']]);
@@ -31,7 +32,7 @@ class UsersController extends Controller
         // $user->update($request->all());
 
         $data = $request->all();
-// dd($data);
+        // dd($data);
         if ($request->avatar) {
             $result = $uploader->save($request->avatar, 'avatars', $user->id, 362);
             if ($result) {

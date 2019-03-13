@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Topic;
 use Auth;
+// 引入权限角色trait
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
@@ -13,6 +15,9 @@ class User extends Authenticatable
         notify as protected laravelNotify;
     }
 
+    // 使用trait
+    use HasRoles;
+    
     /**
      * The attributes that are mass assignable.
      *
