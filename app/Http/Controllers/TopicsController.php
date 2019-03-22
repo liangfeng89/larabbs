@@ -10,7 +10,7 @@ use App\Http\Requests\TopicRequest;
 use App\Models\Category;
 use Auth;
 use App\Handlers\ImageUploadHandler;
-
+use App\Models\Link;
 use Cache;
 // use Carbon\Carbon;
 
@@ -21,7 +21,7 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index(Request $request, Topic $topic, User $user)
+	public function index(Request $request, Topic $topic, User $user, Link $link)
 	{
 
 		// dd(Cache::get('testAA'));
@@ -29,7 +29,9 @@ class TopicsController extends Controller
 		// dd( Carbon::now()->subDays(7) );
 		$topics = $topic->withOrder($request->order)->paginate(30);	
 		$active_users = $user->getActiveUsers();
-		return view('topics.index', compact('topics', 'active_users'));
+		$links = $link->getAllCached();
+		// dd($links);
+		return view('topics.index', compact('topics', 'active_users', 'links'));
 	}
 
     public function show(Topic $topic, Request $request)
