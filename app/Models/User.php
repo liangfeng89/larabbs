@@ -11,6 +11,9 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
+    // 用户最后活跃时间
+    use Traits\LastActivedAtHelper;
+
     use Notifiable{
         notify as protected laravelNotify;
     }
