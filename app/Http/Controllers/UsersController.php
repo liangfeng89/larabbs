@@ -17,6 +17,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
+        // dd($user->last_actived_at);
     	return view('users.show', compact('user'));
     }
 
