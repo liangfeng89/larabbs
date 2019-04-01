@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a85383bdad84beef26b0529e6a7731b5",
+    "content-hash": "281d3fa3177e7163e2434424b3fc2c78",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -2089,6 +2089,53 @@
                 "php"
             ],
             "time": "2019-01-12T16:31:37+00:00"
+        },
+        {
+            "name": "overtrue/easy-sms",
+            "version": "1.1.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/easy-sms.git",
+                "reference": "b1d181551944710f63cd3049796225c71badca86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overtrue/easy-sms/zipball/b1d181551944710f63cd3049796225c71badca86",
+                "reference": "b1d181551944710f63cd3049796225c71badca86",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "mockery/mockery": "1.0.x-dev",
+                "phpunit/phpunit": "^5.7 || ^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\EasySms\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "overtrue",
+                    "email": "i@overtrue.me"
+                }
+            ],
+            "description": "The easiest way to send short message.",
+            "time": "2019-03-25T07:42:05+00:00"
         },
         {
             "name": "overtrue/laravel-lang",
