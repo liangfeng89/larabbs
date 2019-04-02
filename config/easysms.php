@@ -21,8 +21,6 @@ return [
         'huyi' => [
             'api_id' => env('YUYI_API_ID'),
             'api_key' => env('YUYI_API_KEY')
-            // fea953bbd38faa37e9c9520d4e1eedfe
-            // C73416771
             //'signature' => env('YUNPIAN_API_KEY'),  
         ],        
     ],
