@@ -21,10 +21,17 @@ $api->version('v1', [
 ], function($api) {
     // 短信验证码
     // return response('this is version v1');
-    $api->post('verificationCodes', 'VerificationCodesController@store')
-        ->name('api.verificationCodes.store');
+	$api->group([
+		'middleware' => 'api.throttle',
+		'limit'	=> config('api.rate_limits.sign.limit'),
+		'expire' => config('api.rate_limits.sign.expire'),
+	], 
+	function($api){
+	    $api->post('verificationCodes', 'VerificationCodesController@store')
+	        ->name('api.verificationCodes.store');
 
-    // 用户注册    
-    $api->post('users', 'UsersController@store')
-    	->name('api.user.store');
+	    // 用户注册    
+	    $api->post('users', 'UsersController@store')
+	    	->name('api.user.store');
+	});
 });
