@@ -179,6 +179,8 @@ return [
 
         App\Providers\EasySmsServiceProvider::class,
 
+        \SocialiteProviders\Manager\ServiceProvider::class,
+
     ],
 
     /*
