@@ -9,7 +9,10 @@ use Auth;
 // 引入权限角色trait
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+// JWT 验证
+use Tymon\JWTAuth\Contracts\JWTSubject;
+
+class User extends Authenticatable implements JWTSubject
 {
     // 用户最后活跃时间
     use Traits\LastActivedAtHelper;
@@ -98,4 +101,17 @@ class User extends Authenticatable
 
         $this->attributes['avatar'] = $path;
     }
+
+
+    // Rest omitted for brevity 以下两个方法是实现 JWTSubject 接口两个方法 getJWTIdentifier，getJWTCustomClaims
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }   
 }
