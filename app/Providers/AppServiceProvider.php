@@ -19,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
         \App\Models\Link::observe(\App\Observers\LinkObserver::class);
 
         \Carbon\Carbon::setLocale('zh');
+
+/*        app('Dingo\Api\Transformer\Factory')->setAdapter(function ($app) {
+            $fractal = new \League\Fractal\Manager;
+            $fractal->setSerializer(new \League\Fractal\Serializer\ArraySerializer);
+            return new \Dingo\Api\Transformer\Adapter\Fractal($fractal);
+        });    */   
     }
 
     /**
