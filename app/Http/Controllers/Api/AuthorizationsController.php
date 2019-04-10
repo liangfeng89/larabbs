@@ -75,7 +75,7 @@ class AuthorizationsController extends Controller
 
         $credentials['password'] = $request->password;
 
-        if (!$token = \Auth::guard('api')->attempt($credentials)) {
+        if (!$token = Auth::guard('api')->attempt($credentials)) {
             return $this->response->errorUnauthorized('用户名或密码错误');
         }
 
@@ -84,7 +84,7 @@ class AuthorizationsController extends Controller
 /*        return $this->response->array([
             'access_token' => $token,
             'token_type' => 'Bearer',
-            'expires_in' => \Auth::guard('api')->factory()->getTTL() * 60
+            'expires_in' => Auth::guard('api')->factory()->getTTL() * 60
         ])->setStatusCode(201);*/
     }
 
