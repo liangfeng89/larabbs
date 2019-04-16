@@ -65,6 +65,10 @@ $api->version('v1', [
         	'middleware' => 'api.auth',
     	],
     	 function($api) {
+			 // 发布话题
+			$api->post('topics', 'TopicsController@store')
+			    ->name('api.topics.store');   
+			    	 	
             // 当前登录用户信息
             $api->get('user', 'UsersController@me')
                 ->name('api.user.show');
