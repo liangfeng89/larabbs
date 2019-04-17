@@ -29,6 +29,10 @@ $api->version('v1', [
 	], 
 	function($api){
 	// 游客可以访问的接口
+		// 话题详情
+		$api->get('topics/{topic}', 'TopicsController@show')
+		    ->name('api.topics.show');		
+
 		// 指定用户的话题
 		$api->get('users/{user}/topics', 'TopicsController@userIndex')
 		    ->name('api.users.topics.index');
