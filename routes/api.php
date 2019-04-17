@@ -29,6 +29,14 @@ $api->version('v1', [
 	], 
 	function($api){
 	// 游客可以访问的接口
+		// 指定用户的话题
+		$api->get('users/{user}/topics', 'TopicsController@userIndex')
+		    ->name('api.users.topics.index');
+
+		// 话题列表
+		$api->get('topics', 'TopicsController@index')
+		    ->name('api.topics.index');	
+		    	
 		// 主题分类
 		$api->get('categories', 'CategoriesController@index')
 			->name('api.categories.index');
@@ -56,6 +64,7 @@ $api->version('v1', [
 		// 刷新token
 		$api->put('authorizations/current', 'AuthorizationsController@update')
 		    ->name('api.authorizations.update');
+
 		// 删除token
 		$api->delete('authorizations/current', 'AuthorizationsController@destroy')
 		    ->name('api.authorizations.destroy');	
