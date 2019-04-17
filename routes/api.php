@@ -78,6 +78,9 @@ $api->version('v1', [
         	'middleware' => 'api.auth',
     	],
     	 function($api) {
+			// 发布回复
+			$api->post('topics/{topic}/replies', 'RepliesController@store')
+			    ->name('api.topics.replies.store');
 
     	 	// 删除话题
 			$api->delete('topics/{topic}', 'TopicsController@destroy')
