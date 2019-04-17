@@ -78,6 +78,11 @@ $api->version('v1', [
         	'middleware' => 'api.auth',
     	],
     	 function($api) {
+
+			// 删除回复
+			$api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
+			    ->name('api.topics.replies.destroy');    
+			    	 	
 			// 发布回复
 			$api->post('topics/{topic}/replies', 'RepliesController@store')
 			    ->name('api.topics.replies.store');
