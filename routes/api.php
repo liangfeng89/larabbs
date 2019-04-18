@@ -32,7 +32,7 @@ $api->version('v1', [
 		// 某个用户的回复列表
 		$api->get('users/{user}/replies', 'RepliesController@userIndex')
 		    ->name('api.users.replies.index');
-    
+
 		// 话题回复列表
 		$api->get('topics/{topic}/replies', 'RepliesController@index')
 		    ->name('api.topics.replies.index');
@@ -86,6 +86,10 @@ $api->version('v1', [
         	'middleware' => 'api.auth',
     	],
     	 function($api) {
+    	 	
+			// 通知列表
+			$api->get('user/notifications', 'NotificationsController@index')
+			    ->name('api.user.notifications.index');
 
 			// 删除回复
 			$api->delete('topics/{topic}/replies/{reply}', 'RepliesController@destroy')
