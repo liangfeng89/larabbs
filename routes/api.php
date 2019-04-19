@@ -18,7 +18,7 @@ $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [
     'namespace' => 'App\Http\Controllers\Api',
-    'middleware' => ['serializer:array', 'bindings']
+    'middleware' => ['serializer:array', 'bindings', 'change-locale']
 ], function($api) {
     // 短信验证码
     // return response('this is version v1');
@@ -29,7 +29,7 @@ $api->version('v1', [
 	], 
 	function($api){
 	// 游客可以访问的接口
-		
+
 		// 活跃用户
 		$api->get('actived/users', 'UsersController@activedIndex')
 		    ->name('api.actived.users.index');

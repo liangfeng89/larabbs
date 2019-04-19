@@ -12,6 +12,7 @@ class TopicsController extends Controller
 {
     public function store(TopicRequest $request, Topic $topic)
     {
+        // $this->errorResponse(403, '测试', 1003);
         $topic->fill($request->all());
         $topic->user_id = $this->user()->id;
         $topic->save();
