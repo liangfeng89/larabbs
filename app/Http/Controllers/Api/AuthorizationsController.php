@@ -14,8 +14,13 @@ use Psr\Http\Message\ServerRequestInterface;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\AuthorizationServer;
 
+// Passport 第三方登录
+use App\Traits\PassportToken;
+
 class AuthorizationsController extends Controller
 {
+    use PassportToken;
+
     // 第三方登录
     public function socialStore($type, SocialAuthorizationRequest $request)
     {
@@ -27,11 +32,11 @@ class AuthorizationsController extends Controller
         $driver = \Socialite::driver($type);
 
         try {
-            if ($code = $request->code) {
+            if ($code = $request->code) { // code 方式
                 $response = $driver->getAccessTokenResponse($code);
                 $token = array_get($response, 'access_token');
             } else {
-                $token = $request->access_token;
+                $token = $request->access_token;  // token 方式
 
                 if ($type == 'weixin') {
                     $driver->setOpenId($request->openid);
@@ -65,9 +70,17 @@ class AuthorizationsController extends Controller
 
                 break;
         }
-        $token = Auth::guard('api')->fromUser($user);
-        return $this->respondWithToken( $token)->setStatusCode(201);
-        // return $this->response->array(['token' => $user->id]);
+
+        // JWT 方式返回 token
+/*        $token = Auth::guard('api')->fromUser($user);
+        return $this->respondWithToken( $token)->setStatusCode(201);*/
+        // JWT 方式返回 token
+
+        // passport 方式返回 token
+        $result = $this->getBearerTokenByUser($user, '1', false);
+        return $this->response->array($result)->setStatusCode(201);  
+        // passport 方式返回 token    
+        
     }
 /*
     // 用户登录 JWT 方式登录
