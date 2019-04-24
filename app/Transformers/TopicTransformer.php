@@ -12,9 +12,9 @@ class TopicTransformer extends TransformerAbstract
     public function transform(Topic $topic)
     {
         return [
-            'id' => $topic->id,
+            // 'id' => $topic->id,
             'title' => $topic->title,
-            'body' => $topic->body,
+            // 'body' => $topic->body,
             'user_id' => (int) $topic->user_id,
             'category_id' => (int) $topic->category_id,
             'reply_count' => (int) $topic->reply_count,
