@@ -29,7 +29,6 @@ $api->version('v1', [
 	], 
 	function($api){
 	// 游客可以访问的接口
-
 		// 活跃用户
 		$api->get('actived/users', 'UsersController@activedIndex')
 		    ->name('api.actived.users.index');
@@ -81,6 +80,10 @@ $api->version('v1', [
 		// 登录
 		$api->post('authorizations', 'AuthorizationsController@store')
 		    ->name('api.authorizations.store');	
+
+        // 小程序登录
+        $api->post('weapp/authorizations', 'AuthorizationsController@weappStore')
+            ->name('api.weapp.authorizations.store');
 
 		// 刷新token
 		$api->put('authorizations/current', 'AuthorizationsController@update')
