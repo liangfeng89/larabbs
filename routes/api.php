@@ -148,7 +148,10 @@ $api->version('v1', [
 
 			// 编辑登录用户信息
 			$api->patch('user', 'UsersController@update')
-			    ->name('api.user.update');		        
+			    ->name('api.user.update');
+			// 小程序编辑用户信息    	
+            $api->put('user', 'UsersController@update')
+                ->name('api.user.update');			    	        
 		});
 
 	});
