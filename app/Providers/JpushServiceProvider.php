@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use JPush\Client;
 use Illuminate\Support\ServiceProvider;
 
 class JpushServiceProvider extends ServiceProvider

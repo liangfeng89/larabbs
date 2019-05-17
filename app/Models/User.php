@@ -68,7 +68,8 @@ class User extends Authenticatable implements JWTSubject
             return;
         }
         $this->increment('notification_count');
-        $this->laravelNotify($instance);
+        // 信息通知
+        // $this->laravelNotify($instance);  
     } 
 
     public function markAsRead()

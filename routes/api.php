@@ -113,6 +113,9 @@ $api->version('v1', [
 			// 标记消息通知为已读
 			$api->patch('user/read/notifications', 'NotificationsController@read')
 			    ->name('api.user.notifications.read');   
+			// 因为微信不支持 PATCH 请求，所以对 LaraBBS 中的 标记消息通知为已读 接口增加一个对应的 PUT 请求			    
+            $api->put('user/read/notifications', 'NotificationsController@read')
+                ->name('api.user.notifications.read.put');
 			     	 	
 			// 通知统计
 			$api->get('user/notifications/stats', 'NotificationsController@stats')
